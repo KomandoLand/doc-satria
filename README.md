@@ -1,16 +1,16 @@
-# Dokumentasi SIKU - Sistem Informasi Sekolah Khoiru Ummah
+# Dokumentasi Komando Satria
 
-Situs web dokumentasi resmi aplikasi **SIKU (Sistem Informasi dan Presensi Multi-Metode Sekolah Khoiru Ummah)** yang dibangun menggunakan [Docusaurus](https://docusaurus.io/).
+Situs web dokumentasi resmi aplikasi **Komando Satria Apps (Sistem Informasi Manajemen Prajurit & Satuan Militer)** yang dibangun menggunakan [Docusaurus](https://docusaurus.io/).
 
 ---
 
-## 🚀 Fitur Dokumentasi
+## 🚀 Cakupan Dokumentasi
 
-- **Panduan Teknis Lengkap**: Langkah instalasi, database migration, seeding, environment `.env`, konfigurasi Nginx production, dan Docker setup.
-- **Modul Presensi 3-in-1**: Dokumentasi pemindaian QR Code, integrasi RFID card USB reader, dan deteksi wajah (Face Recognition) serta Audio Announcer Text-To-Speech (TTS).
-- **Notifikasi WhatsApp**: Panduan konfigurasi 5 gateway WhatsApp (Fonnte, OpenWA, ApiMe, Evolution API, wuzapi) beserta mode rotasi otomatis (*Auto*).
-- **Progressive Web App (PWA)**: Panduan instalasi aplikasi native standalone di mobile dan desktop serta generator ikon via CLI (`php spark pwa:icons`).
-- **7 Role-Based Dashboard**: Panduan operasional untuk Superadmin, Admin, Kepala Sekolah, Wali Kelas, Orang Tua, Alumni, dan Petugas Scanner.
+- **Panduan Teknis & Instalasi**: Langkah instalasi CodeIgniter 4, koneksi PostgreSQL, kontainerisasi Docker + Caddy, migrasi database, dan perintah CLI `php spark`.
+- **Sistem RBAC Militer**: Arsitektur hak akses hierarki komando militer 11 role (Brigif, Denma, Yonif, Kompi, Seksi, Koramil, Staf), matriks wewenang, dan panduan ujicoba via seeder.
+- **Modul Prajurit**: Manajemen biodata personel, riwayat kepangkatan, jabatan, keluarga, pendidikan umum & militer, operasi tugas LN / tahorneg, dan penilaian kemampuan (garjas, renang, menembak, beladiri).
+- **Modul Militer**: Manajemen data organisasi satuan, inventaris alutsista & mutasi senjata, program latihan satuan, serta pembinaan teritorial (Binter) Koramil.
+- **Modul Admin**: Dashboard analitik militer real-time dengan Chart.js, manajemen pengguna, konfigurasi role-permission, dan audit log.
 - **Pencarian Lokal**: Fitur pencarian instan luring berbasis `@cmfcmf/docusaurus-search-local`.
 
 ---

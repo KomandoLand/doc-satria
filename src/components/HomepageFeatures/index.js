@@ -4,32 +4,32 @@ import styles from './styles.module.css';
 
 const FeatureList = [
   {
-    title: 'Presensi 3-in-1 & Audio TTS',
+    title: 'Hierarki RBAC Militer 11 Role',
     Svg: require('@site/static/img/undraw_docusaurus_mountain.svg').default,
     description: (
       <>
-        Mendukung QR Code Scanner, tap kartu RFID via USB reader, serta Face Recognition & Camera Capture.
-        Dilengkapi pengumuman suara otomatis (Edge-TTS API & browser Web Speech API) saat scan berhasil.
+        Sistem otorisasi bertingkat merefleksikan rantai komando militer secara presisi:
+        dari tingkat Brigif, Denma, Batalyon (Yonif), Kompi, Seksi, hingga Koramil kewilayahan.
       </>
     ),
   },
   {
-    title: '7 Role-Based Multi-Dashboard',
+    title: 'Manajemen Prajurit Lengkap',
     Svg: require('@site/static/img/undraw_docusaurus_tree.svg').default,
     description: (
       <>
-        Dibangun di atas CodeIgniter 4 & Shield dengan 7 hak akses terisolasi: Superadmin, Admin, Kepala Sekolah,
-        Guru/Wali Kelas, Orang Tua, Alumni, dan Petugas Scanner Gerbang.
+        Pelacakan biodata dan riwayat komprehensif: pangkat, jabatan, pendidikan umum &amp; militer,
+        penugasan operasi &amp; tahorneg, uji kemampuan fisik/garjas/menembak, serta data keluarga.
       </>
     ),
   },
   {
-    title: 'Notifikasi WA & PWA Standalone',
+    title: 'Alutsista & Teritorial Terpadu',
     Svg: require('@site/static/img/undraw_docusaurus_react.svg').default,
     description: (
       <>
-        Integrasi notifikasi instan via 5 Gateway WhatsApp (Fonnte, OpenWA, ApiMe, Evolution API, wuzapi) dengan mode acak auto-rotasi,
-        serta Progressive Web App (PWA) yang dapat dipasang di Android, iOS, dan Desktop.
+        Monitoring inventaris alutsista &amp; mutasi senjata, pelacakan progres program satuan bertahap,
+        serta geotagging dokumentasi kegiatan pembinaan teritorial (Binter) Koramil.
       </>
     ),
   },

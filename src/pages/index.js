@@ -17,8 +17,9 @@ function HomepageHeader() {
         </Heading>
         <p className="hero__subtitle">{siteConfig.tagline}</p>
         <p style={{maxWidth: '780px', margin: '0 auto 1.5rem', opacity: 0.9}}>
-          Solusi otomasi absensi dan manajemen sekolah terpadu dengan Presensi 3-in-1 (QR, RFID, Face Scan),
-          pengumuman suara otomatis (TTS), notifikasi WhatsApp multi-provider, dan 7 peran pengguna CodeIgniter Shield.
+          Platform komando dan tata kelola militer modern berbasis CodeIgniter 4 &amp; PostgreSQL.
+          Dilengkapi hierarki RBAC militer 11 role, manajemen lengkap data riwayat prajurit,
+          inventaris senjata &amp; mutasi alutsista, serta analitik komando terpadu.
         </p>
         <div className={styles.buttons} style={{display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap'}}>
           <Link
@@ -33,8 +34,8 @@ function HomepageHeader() {
           </Link>
           <Link
             className="button button--secondary button--lg"
-            href="https://github.com/KU-JakartaTimur/siku">
-            GitHub SIKU 💻
+            href="https://github.com/KomandoLand/apps">
+            GitHub Komando ⚔️
           </Link>
         </div>
       </div>
@@ -47,7 +48,7 @@ export default function Home() {
   return (
     <Layout
       title={siteConfig.title}
-      description="Dokumentasi Teknis dan Panduan Operasional Sistem Informasi Sekolah Khoiru Ummah (SIKU)">
+      description="Dokumentasi Resmi Sistem Informasi Manajemen Prajurit & Satuan Militer - Komando Satria">
       <HomepageHeader />
       <main>
         <HomepageFeatures />

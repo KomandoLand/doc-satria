@@ -151,7 +151,7 @@ const config = {
             items: [
               {
                 label: 'Modul Prajurit',
-                to: '/docs/prajurit/index',
+                to: '/docs/prajurit',
               },
               {
                 label: 'Modul Satuan & Senjata',
