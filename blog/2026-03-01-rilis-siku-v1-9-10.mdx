@@ -1,0 +1,40 @@
+---
+slug: rilis-siku-v1-9-10
+title: "Rilis SIKU v1.9.10: Presensi 3-in-1, Face Recognition, dan Audio Announcer TTS"
+authors: [mdestafadilah]
+tags: [release, fitur-baru]
+---
+
+Alhamdulillah, pembaruan besar untuk **SIKU (Sistem Informasi dan Presensi Sekolah Khoiru Ummah)** versi **1.9.10** resmi dirilis! 
+
+Pada versi ini, fokus utama pengembangan adalah meningkatkan fleksibilitas pemindaian di pintu masuk sekolah, keandalan sistem audio penyambutan, serta penyempurnaan manajemen perizinan dan disiplin waktu.
+
+{/* truncate */}
+
+![Halaman Scanner Presensi SIKU](/img/screenshots/new-scanner-1.9.10.png)
+
+---
+
+## Sorotan Pembaruan di Versi 1.9.10
+
+### 1. Presensi Multi-Metode (3-in-1)
+Kini sekolah tidak hanya terbatas pada pemindaian kamera QR Code. Sistem telah terintegrasi dengan:
+- **QR Code Scanner**: Menggunakan ZXing JS untuk pemindaian instan via kamera webcam atau smartphone.
+- **Integrasi RFID Card USB Reader**: Cukup tap kartu pelajar atau kartu guru ke USB RFID Reader tanpa perlu menyentuh kamera.
+- **Face Recognition & Camera Capture**: Deteksi wajah berbasis server AI dan pemotretan otomatis foto wajah sebagai bukti fisik presensi digital.
+
+### 2. Audio Announcer (Text-To-Speech / TTS)
+Untuk memberikan pengalaman yang ramah dan interaktif, sistem memutar suara sapaan secara otomatis saat presensi berhasil diverifikasi (contoh: *"Selamat pagi, Ananda Fulan. Presensi masuk berhasil"*). 
+Sistem menggabungkan **Edge-TTS API** untuk suara alami berbahasa Indonesia dengan fallback otomatis ke **Web Speech API** bawaan browser jika server offline.
+
+### 3. Poin Keterlambatan & Widget Top 5
+Untuk mendukung kedisiplinan, SIKU menghitung selisih menit keterlambatan terhadap jam masuk standar sekolah dan mengakumulasikannya ke dalam profil siswa. Dashboard admin kini dilengkapi widget **Top 5 Siswa Terlambat** serta peringatan dini untuk siswa yang tidak hadir 3 hari berturut-turut tanpa keterangan.
+
+![Dashboard Utama Admin SIKU](/img/screenshots/admin-dashboard-1.9.10.png)
+
+### 4. 7 Hak Akses Terisolasi (CodeIgniter Shield)
+Akses pengguna kini dibagi menjadi 7 grup terpisah: `superadmin`, `admin`, `kepsek`, `guru` (Wali Kelas), `orangtua`, `alumni`, dan `scanner`. Setiap peran hanya dapat mengakses halaman dan data yang relevan dengan tanggung jawabnya.
+
+---
+
+Terima kasih kepada seluruh pihak dan komunitas yang terus mendukung pengembangan SIKU. Silakan periksa repositori utama di [GitHub SIKU](https://github.com/KU-JakartaTimur/siku) untuk melihat changelog lengkapnya!

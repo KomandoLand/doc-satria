@@ -1,0 +1,41 @@
+---
+slug: integrasi-whatsapp-multi-provider
+title: "Integrasi Notifikasi WhatsApp Multi-Provider dan Mode Auto di SIKU"
+authors: [mdestafadilah]
+tags: [whatsapp, fitur-baru]
+---
+
+Salah satu fitur yang paling diminati oleh wali murid adalah notifikasi instan saat putra-putrinya tiba dan pulang dari sekolah. Pada tulisan ini, saya ingin membagikan pendekatan arsitektur pengiriman notifikasi WhatsApp di SIKU.
+
+{/* truncate */}
+
+![Pratinjau Notifikasi WhatsApp](/img/screenshots/notif-wa.png)
+
+---
+
+## Tantangan Notifikasi Sekolah Skala Ratusan Siswa
+
+Dalam implementasi sistem absensi sekolah dengan ratusan hingga ribuan siswa, pengiriman pesan dalam rentang waktu yang sempit (jam 06.30 - 07.15 pagi) menimbulkan beberapa tantangan:
+
+1. **Risiko Pemblokiran (*Banned*) Nomor WhatsApp**: Mengirim ratusan pesan dalam hitungan menit dari satu nomor telepon sangat rentan dicurigai sebagai spam oleh algoritma Meta.
+2. **Ketergantungan Layanan Pihak Ketiga**: Jika mengandalkan satu vendor berbayar saja dan layanannya sedang mengalami downtime, sekolah kehilangan kemampuan notifikasi secara total.
+
+---
+
+## Solusi SIKU: Dukungan 5 Gateway & Mode Rotasi Auto
+
+Untuk mengatasi hal tersebut, SIKU dirancang fleksibel dengan mendukung 5 gateway WhatsApp:
+
+- **Fonnte**: Layanan SaaS berbasis cloud terkelola (berbayar) bagi sekolah yang menginginkan kepraktisan tanpa mengelola server sendiri.
+- **OpenWA**: Gateway mandiri berbasis Node.js yang stabil.
+- **ApiMe**: Gateway mandiri berbasis Go dan WhatsMeow, sangat ringan dan hemat memori.
+- **Evolution API**: Gateway modern berbasis Node.js / Baileys dengan arsitektur REST API lengkap.
+- **wuzapi**: Gateway berbasis Go / WhatsMeow yang cepat dan cocok untuk server spesifikasi hemat.
+
+### Mekanisme Mode `Auto` (Load Balancing)
+
+Dengan menyetel `WHATSAPP_PROVIDER=Auto` pada konfigurasi `.env`, sistem secara dinamis mengumpulkan semua token provider yang aktif dan merotasi pengirimannya secara acak (*random rotation*). 
+
+Pesan siswa A dikirim melalui provider 1, siswa B melalui provider 2, dan seterusnya. Beban terdistribusi merata dan kemungkinan nomor diblokir menjadi sangat kecil.
+
+Selain itu, sistem menyertakan **normalisasi nomor telepon otomatis** (mengubah format `08...` ke format internasional `628...`) dan batas *timeout* yang aman agar scanner pos gerbang tidak terhambat jika terjadi latensi jaringan.

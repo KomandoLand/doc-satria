@@ -1,0 +1,45 @@
+---
+slug: pwa-standalone-pos-presensi
+title: "Optimalisasi Kiosk Pos Presensi Sekolah dengan Progressive Web App (PWA)"
+authors: [mdestafadilah]
+tags: [pwa, arsitektur]
+---
+
+Di lingkungan operasional sekolah, perangkat pemindai presensi di gerbang sering kali berupa laptop staf piket, mini PC dengan monitor sentuh, atau tablet Android/iPad. 
+
+Menggunakan browser konvensional kerap menimbulkan kendala: siswa atau staf secara tidak sengaja menekan tombol *back*, menutup tab, atau mengalami tampilan halaman putih (*blank page*) saat sinyal Wi-Fi luar ruangan terputus.
+
+Dalam artikel ini, saya merangkum bagaimana implementasi **Progressive Web App (PWA)** menyelesaikan permasalahan tersebut di SIKU.
+
+{/* truncate */}
+
+---
+
+## 1. Tampilan Layar Penuh (*Standalone Mode*)
+
+Dengan konfigurasi `manifest.json` yang tepat, SIKU dapat dipasang (*install*) langsung ke homescreen perangkat. Saat dibuka:
+- Bilah alamat (*address bar*) dan tombol navigasi browser disembunyikan sepenuhnya.
+- Tampilan aplikasi terkunci pada antarmuka scanner presensi yang bersih dan profesional.
+- Mendukung *splash screen* bertema identitas sekolah saat aplikasi pertama kali dibuka.
+
+## 2. Penanganan Halaman Offline Anggun (*Graceful Offline Handling*)
+
+Service Worker SIKU dikonfigurasi dengan aturan *Network-First* untuk data presensi dan *Cache-First* untuk aset statis (CSS, JS, logo, suara). 
+
+Jika jaringan terputus sementara, aplikasi tidak menampilkan pesan error browser jelek ("No internet"), melainkan halaman `offline.html` ramah pengguna yang menginstruksikan langkah pengecekan kabel LAN atau koneksi Wi-Fi gerbang.
+
+## 3. Otomasi Generator Ikon PWA via Spark CLI
+
+Salah satu kerumitan dalam PWA adalah menyiapkan berkas ikon dengan berbagai rasio ukuran (72x72, 96x96, 128x128, 144x144, 152x152, 192x192, 384x384, dan 512x512).
+
+Untuk mempermudah sekolah yang ingin mempersonalisasi logo mereka, saya membangun perintah Spark generator khusus:
+
+```bash
+php spark pwa:icons --logo writable/uploads/logo/logo_sekolah.png
+```
+
+Perintah ini menggunakan ekstensi PHP GD untuk otomatis memotong (*crop*), meresize, dan menyusun seluruh paket ikon PWA ke folder `public/assets/icons/` dalam sekali eksekusi.
+
+---
+
+Semoga catatan teknis ini bermanfaat bagi rekan-rekan pengembang yang sedang mengimplementasikan teknologi PWA untuk kebutuhan kiosk institusi pendidikan!

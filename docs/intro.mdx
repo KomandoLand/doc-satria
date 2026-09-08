@@ -1,0 +1,84 @@
+---
+sidebar_position: 1
+---
+
+# Pengenalan Komando Satria
+
+Selamat datang di Dokumentasi Resmi **Komando Satria Apps — Sistem Informasi Manajemen Prajurit & Satuan Militer**.
+
+Aplikasi Web **Komando Satria** adalah sistem terpadu yang dirancang untuk mengotomatisasi pengelolaan data prajurit, satuan militer, alutsista, kegiatan teritorial, dan program satuan. Dibangun menggunakan framework **CodeIgniter 4** dengan sistem **RBAC (Role-Based Access Control)** berbasis hierarki komando militer, Komando Satria menyediakan platform yang andal, terstruktur, dan terukur untuk mendukung administrasi dan pengambilan keputusan satuan TNI.
+
+---
+
+## Fitur Utama
+
+- **Manajemen Data Prajurit Lengkap**: Biodata, riwayat pangkat, riwayat jabatan, riwayat keluarga, riwayat pendidikan (umum & militer), riwayat operasi, riwayat tugas luar negeri, dan riwayat kapor lapangan.
+- **Manajemen Alutsista & Senjata**: Pencatatan senjata beserta status kondisi, mutasi senjata antar satuan, dan pelacakan pergerakan aset secara terpusat.
+- **Penilaian Kemampuan Prajurit**: Modul nilai menembak, kemampuan jasmil (progbinjasmil), nilai garjas, renang, dan beladiri.
+- **Manajemen Program & Kegiatan**: Perencanaan program satuan dengan fase dan submission, serta pencatatan kegiatan teritorial lengkap dengan data personel.
+- **Dashboard Analitik**: Statistik real-time jumlah prajurit, senjata, program aktif, dan kegiatan bulan ini dengan grafik interaktif berbasis Chart.js.
+- **RBAC Hierarki Komando Militer**: Sistem hak akses berlapis sesuai tingkatan komando — dari Brigif hingga Regu — dengan matriks permission yang presisi (`create`, `read_all`, `read_own`, `update_all`, `update_own`, `delete_all`, `delete_own`).
+- **Grocery CRUD**: Generator antarmuka CRUD otomatis untuk percepatan pengembangan modul data master.
+- **Container Ready**: Siap di-deploy dengan Docker menggunakan `Dockerfile` dan `docker-compose.yml` yang telah dikonfigurasi.
+
+---
+
+## 11 Role RBAC & Hierarki Komando
+
+Aplikasi mengimplementasikan sistem hak akses berbasis hierarki komando militer:
+
+| Hak Akses / Role | Jabatan | Level Akses | Ringkasan Wewenang |
+| :--- | :--- | :---: | :--- |
+| `admin` | **Administrator** | 🔴 FULL | Akses penuh ke seluruh modul, pengaturan, manajemen user, role, modul, dan menu. |
+| `brigif` | **Komandan Brigif** | 🟠 Tinggi | `create`, `read_all`, `update_all`, `delete_own` + akses menu sistem. |
+| `staff_brigif` | **Staff Brigif** | 🟠 Tinggi | `create`, `read_all`, `update_own`, `delete_own` — tanpa `update_all`. |
+| `denma` | **Detasemen Markas** | 🟠 Tinggi | `create`, `read_all`, `update_all` — tanpa `delete` + akses menu sistem. |
+| `batalyon` | **Komandan Batalyon** | 🟡 Menengah | `create`, `read_all`, `update_all`, `delete_own`. |
+| `staff_batalyon` | **Staff Batalyon** | 🟡 Menengah | `create`, `read_all`, `update_own`, `delete_own`. |
+| `seksi` | **Kepala Seksi** | 🟡 Menengah | `create`, `read_all`, `update_own` — tanpa akses hapus. |
+| `unit_staf` | **Unit Staf** | 🟡 Menengah | `create`, `read_all`, `update_own` — tanpa akses hapus. |
+| `kompi` | **Komandan Kompi** | 🟢 Terbatas | `read_all`, `read_own`, `update_own` — tidak bisa membuat data baru. |
+| `peleton` | **Komandan Peleton** | 🔵 Minimal | `read_own`, `update_own` — hanya data milik sendiri. |
+| `regu` | **Komandan Regu** | 🔵 Minimal | `read_own`, `update_own` — hanya data milik sendiri. |
+
+---
+
+## Kredensial Bawaan Sistem
+
+Untuk memulai eksplorasi awal, sistem menyediakan akun default Administrator:
+
+- **Username**: `admin`
+- **Password**: `admin`
+
+:::caution Keamanan Akun
+Pastikan Anda langsung memperbarui username, email, dan kata sandi akun `admin` setelah berhasil masuk pertama kali!
+:::
+
+---
+
+## Stack Teknologi
+
+| Komponen | Teknologi |
+| :--- | :--- |
+| **Backend Framework** | CodeIgniter 4 (v4.7.4) |
+| **Database** | PostgreSQL 14+ |
+| **Autentikasi** | CodeIgniter Shield v1.3 |
+| **CRUD Generator** | Grocery CRUD |
+| **Pembuatan PDF** | TCPDF / FPDI |
+| **Ekspor Excel** | OpenSpout / PhpSpreadsheet |
+| **HTTP Client** | Guzzle 7 |
+| **Email** | PHPMailer |
+| **Kontainerisasi** | Docker + Docker Compose |
+| **Web Server** | Caddy (production) |
+
+---
+
+## Struktur Dokumentasi
+
+Dokumentasi ini disusun secara terstruktur agar mudah dipelajari:
+
+- **Panduan Teknis & Instalasi**: Petunjuk instalasi lokal (Composer), setup PostgreSQL, Docker, dan perintah CLI Spark.
+- **Sistem RBAC Militer**: Penjelasan mendalam tentang hierarki role, matriks permission, dan panduan ujicoba RBAC.
+- **Modul Admin & Pengaturan**: Panduan dashboard analitik, manajemen user/role/modul/menu, dan pengaturan aplikasi.
+- **Modul Prajurit**: Panduan lengkap pengelolaan data biodata prajurit dan seluruh data riwayatnya.
+- **Modul Militer**: Panduan modul satuan, senjata, program, dan kegiatan teritorial.
